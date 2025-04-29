@@ -186,10 +186,6 @@ Row	Desktop Entered	User Count	Average Score
 1	True	103,039	77.78
 2	False	21,478	74.54
 
-##Results: 
-Row	Desktop Entered	User Count	Average Score
-1	True	103,039	77.78
-2	False	21,478	74.54
 
 -- 12. Explore the effect of job types on average scores.
 SELECT
