@@ -78,13 +78,17 @@ ORDER BY
   user_count DESC;
 
 ##Results: 
-Row	OS	User Count
-1	iOS	56,055
-2	Android	44,359
-3	Windows	22,934
-4	Mac OS	1,091
-5	Linux	49
-6	Unknown	16
+
+| **Row** | **OS**      | **User Count** |
+|--------:|-------------|----------------|
+| 1       | iOS         | 56,055         |
+| 2       | Android     | 44,359         |
+| 3       | Windows     | 22,934         |
+| 4       | Mac OS      | 1,091          |
+| 5       | Linux       | 49             |
+| 6       | Unknown     | 16             |
+
+
 
 -- 5. Explore how many students are visiting a tutor.
 SELECT
@@ -98,11 +102,14 @@ ORDER BY
   user_count DESC;
 
 ##Results
-Row	Tutor Response	User Count
-1	Unknown	75,820
-2	Earlier	19,936
-3	I am doing now	14,783
-4	No	13,978
+
+| **Row** | **Tutor Response** | **User Count** |
+|--------:|--------------------|----------------|
+| 1       | Unknown            | 75,820         |
+| 2       | Earlier            | 19,936         |
+| 3       | I am doing now     | 14,783         |
+| 4       | No                 | 13,978         |
+
 
 -- 6. Explore the types of jobs the learners have.
 SELECT
@@ -116,19 +123,43 @@ ORDER BY
   user_count DESC;
 
 ##Results: 
-Row	Job	User Count
-1	Unknown	85,909
-2	Finance	11,440
-3	Medicine	9,186
-4	Education	7,664
-5	IT	6,837
-6	Science	3,481
+
+| **Row** | **Job**      | **User Count** |
+|--------:|--------------|----------------|
+| 1       | Unknown      | 85,909         |
+| 2       | Finance      | 11,440         |
+| 3       | Medicine     | 9,186          |
+| 4       | Education    | 7,664          |
+| 5       | IT           | 6,837          |
+| 6       | Science      | 3,481          |
 
 -- 7. Calculating the correlation between homework completion and average scores.
 SELECT
   CORR(homework_done, average_score) AS correlation_coefficient
 FROM
   `student_pip2.student_per`;
+
+##Results:
+
+| **Row** | **Correlation Coefficient** |
+|--------:|-----------------------------|
+| 1       | 0.0171                      |
+
+##This indicates a very weak positive correlation, likely negligible in practical terms.
+
+| **Correlation (r)** | **Strength**             | **Direction**        | **Interpretation**                                                                 |
+|---------------------|--------------------------|-----------------------|------------------------------------------------------------------------------------|
+| **+1.0**             | Perfect                  | Positive              | A perfect direct relationship; as one increases, the other always increases.       |
+| **+0.7 to +0.9**     | Strong                   | Positive              | A strong relationship; higher values of one are associated with higher values of the other. |
+| **+0.4 to +0.6**     | Moderate                 | Positive              | A moderate relationship, still fairly consistent.                                 |
+| **+0.1 to +0.3**     | Weak                     | Positive              | A slight tendency for one variable to increase as the other does.                 |
+| **0.0 to ±0.1**      | None or Negligible       | —                     | Essentially no linear relationship.                                               |
+| **-0.1 to -0.3**     | Weak                     | Negative              | A slight tendency for one variable to decrease as the other increases.            |
+| **-0.4 to -0.6**     | Moderate                 | Negative              | A moderate inverse relationship.                                                  |
+| **-0.7 to -0.9**     | Strong                   | Negative              | A strong inverse relationship.                                                    |
+| **-1.0**             | Perfect                  | Negative              | A perfect inverse relationship.                                                   |
+
+
 
 -- 8. Exploring homework completion and average score grouping.
 SELECT
@@ -162,10 +193,12 @@ ORDER BY
 
 ##Results: 
 
-Row	Homework Level	Student Count	Average Score
-1	High	22,272	79.24
-2	Low	69,446	76.05
-3	Medium	32,799	78.24
+| **Row** | **Homework Level** | **Student Count** | **Average Score** |
+|--------:|--------------------|-------------------|-------------------|
+| 1       | High               | 22,272            | 79.24             |
+| 2       | Low                | 69,446            | 76.05             |
+| 3       | Medium             | 32,799            | 78.24             |
+
 
 -- 10. Explore the effect of tutor visits on average scores.
 SELECT
@@ -194,9 +227,12 @@ ORDER BY
   user_count DESC;
 
 ##Results:
-Row	Desktop Entered	User Count	Average Score
-1	True	103,039	77.78
-2	False	21,478	74.54
+
+| **Row** | **Desktop Entered** | **User Count** | **Average Score** |
+|--------:|---------------------|----------------|-------------------|
+| 1       | True                | 103,039        | 77.78             |
+| 2       | False               | 21,478         | 74.54             |
+
 
 
 -- 12. Explore the effect of job types on average scores.
