@@ -1,5 +1,5 @@
 # Factors Contributing to Learner Success in EdTech Programs
-# Exploration: Factors Contributing to Learner Success in EdTech
+
 ## Revised Hypothesis:
 What factors contribute to learner success in EdTech environments? Specifically, does homework completion, platform engagement, or tutor visits have an impact on average student scores? Additionally, does job type play a role in learner success?
 
