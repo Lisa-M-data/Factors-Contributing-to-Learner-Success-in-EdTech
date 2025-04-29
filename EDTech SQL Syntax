@@ -42,32 +42,29 @@ FROM
 |-----|----------------|-----------|-------------|---------------|
 | 1   | Total Records  |           |             | 124,517       |
 
-##Results: 
-Row	Total Records
-1	124,517
 
--- 3. Explore student visits to the platform by date of first visit.
+-- 3. Explore student visits to the platform by the month of first visit.
 SELECT
-  DATE(first_visit_date) AS visit_date,
+  FORMAT_DATE('%Y-%m', DATE(first_visit_date)) AS visit_month,
   COUNT(*) AS users
 FROM
   `student_pip2.student_per`
 GROUP BY
-  visit_date
+  visit_month
 ORDER BY
-  visit_date;
+  visit_month;
 
-##Results: 
-Row	Visit Date	Users
-42	2020-05-14	5,519
-43	2020-05-15	3,796
-44	2020-05-16	1,162
-45	2020-05-17	1,355
-46	2020-05-18	4,247
-47	2020-05-19	3,513
-48	2020-05-20	3,022
-49	2020-05-21	2,500
-50	2020-05-22	1,671
+##Results
+
+| **visit_month** | **users** |
+|-----------------|----------|
+| 2020-04         | 67,670   |
+| 2020-05         | 55,168   |
+| 2020-06         | 797      |
+| 2020-07         | 71       |
+| 2020-08         | 42       |
+| 2020-09         | 769      |
+
 
 -- 4. Explore what computer systems learners are using.
 SELECT
@@ -127,8 +124,7 @@ Row	Job	User Count
 5	IT	6,837
 6	Science	3,481
 
--- 7. Hypothesis Testing: Does homework completion affect average scores?
--- Calculating the correlation between homework completion and average scores.
+-- 7. Calculating the correlation between homework completion and average scores.
 SELECT
   CORR(homework_done, average_score) AS correlation_coefficient
 FROM
