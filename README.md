@@ -5,6 +5,7 @@ What factors contribute to learner success in EdTech environments? Specifically,
 
 
 Findings:
+
 Homework Completion vs. Average Scores:
 
 There is a very weak correlation (0.0171) between homework completion and average scores.
