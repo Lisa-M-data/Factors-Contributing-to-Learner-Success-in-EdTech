@@ -8,11 +8,27 @@ FROM
 WHERE
   table_name = 'student_per';
 
+##Results: 
+Row	Column Name	Data Type	Is Nullable
+8	task_class	FLOAT64	YES
+9	average_score	FLOAT64	YES
+10	homework_done	INT64	YES
+11	paywall_paid	BOOL	YES
+12	school_name	STRING	YES
+13	desktop_enter	BOOL	YES
+14	nps_score	FLOAT64	YES
+15	add_homework_done	INT64	YES
+16	call_date	TIMESTAMP	YES
+
 -- 2. Count the total number of records in the dataset.
 SELECT
   COUNT(*) AS total_records
 FROM
   `student_pip2.student_per`;
+
+##Results: 
+Row	Total Records
+1	124,517
 
 -- 3. Explore student visits to the platform by date of first visit.
 SELECT
@@ -25,6 +41,18 @@ GROUP BY
 ORDER BY
   visit_date;
 
+##Results: 
+Row	Visit Date	Users
+42	2020-05-14	5,519
+43	2020-05-15	3,796
+44	2020-05-16	1,162
+45	2020-05-17	1,355
+46	2020-05-18	4,247
+47	2020-05-19	3,513
+48	2020-05-20	3,022
+49	2020-05-21	2,500
+50	2020-05-22	1,671
+
 -- 4. Explore what computer systems learners are using.
 SELECT
   os,
@@ -35,6 +63,15 @@ GROUP BY
   os
 ORDER BY
   user_count DESC;
+
+##Results: 
+Row	OS	User Count
+1	iOS	56,055
+2	Android	44,359
+3	Windows	22,934
+4	Mac OS	1,091
+5	Linux	49
+6	Unknown	16
 
 -- 5. Explore how many students are visiting a tutor.
 SELECT
@@ -47,6 +84,13 @@ GROUP BY
 ORDER BY
   user_count DESC;
 
+##Results
+Row	Tutor Response	User Count
+1	Unknown	75,820
+2	Earlier	19,936
+3	I am doing now	14,783
+4	No	13,978
+
 -- 6. Explore the types of jobs the learners have.
 SELECT
   job,
@@ -57,6 +101,15 @@ GROUP BY
   job
 ORDER BY
   user_count DESC;
+
+##Results: 
+Row	Job	User Count
+1	Unknown	85,909
+2	Finance	11,440
+3	Medicine	9,186
+4	Education	7,664
+5	IT	6,837
+6	Science	3,481
 
 -- 7. Hypothesis Testing: Does homework completion affect average scores?
 -- Calculating the correlation between homework completion and average scores.
@@ -77,6 +130,8 @@ GROUP BY
 ORDER BY
   homework_done;
 
+##Results
+
 -- 9. Homework completion levels: Low, Medium, High.
 SELECT
   CASE
@@ -92,6 +147,13 @@ GROUP BY
   homework_level
 ORDER BY
   homework_level;
+
+##Results: 
+
+Row	Homework Level	Student Count	Average Score
+1	High	22,272	79.24
+2	Low	69,446	76.05
+3	Medium	32,799	78.24
 
 -- 10. Explore the effect of tutor visits on average scores.
 SELECT
@@ -119,6 +181,16 @@ GROUP BY
 ORDER BY
   user_count DESC;
 
+##Results:
+Row	Desktop Entered	User Count	Average Score
+1	True	103,039	77.78
+2	False	21,478	74.54
+
+##Results: 
+Row	Desktop Entered	User Count	Average Score
+1	True	103,039	77.78
+2	False	21,478	74.54
+
 -- 12. Explore the effect of job types on average scores.
 SELECT
   job,                                -- Group by job type
@@ -130,3 +202,12 @@ GROUP BY
   job                                 -- Group by job to analyze its impact
 ORDER BY
   avg_score DESC;                     -- Sort by average score (highest to lowest)
+
+| Row | Job       | Average Score | Student Count |
+|-----|-----------|----------------|----------------|
+| 1   | IT        | 80.09          | 6,837          |
+| 2   | Science   | 79.30          | 3,481          |
+| 3   | Finance   | 77.35          | 11,440         |
+| 4   | Medicine  | 77.10          | 9,186          |
+| 5   | *Unknown* | 77.02          | 85,909         |
+| 6   | Education | 76.01          | 7,664          |
