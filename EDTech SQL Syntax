@@ -103,13 +103,14 @@ ORDER BY
 
 ##Results
 
-| **Row** | **Tutor Response** | **User Count** |
-|--------:|--------------------|----------------|
-| 1       | Unknown            | 75,820         |
-| 2       | Earlier            | 19,936         |
-| 3       | I am doing now     | 14,783         |
-| 4       | No                 | 13,978         |
+### Tutor Engagement Summary
 
+| **Row** | **Tutor**         | **User Count** |
+|---------|-------------------|----------------|
+| 1       | No response       | 75,820         |
+| 2       | Earlier           | 19,936         |
+| 3       | I am doing now    | 14,783         |
+| 4       | No                | 13,978         |
 
 -- 6. Explore the types of jobs the learners have.
 SELECT
