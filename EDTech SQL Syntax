@@ -9,22 +9,38 @@ WHERE
   table_name = 'student_per';
 
 ##Results: 
-Row	Column Name	Data Type	Is Nullable
-8	task_class	FLOAT64	YES
-9	average_score	FLOAT64	YES
-10	homework_done	INT64	YES
-11	paywall_paid	BOOL	YES
-12	school_name	STRING	YES
-13	desktop_enter	BOOL	YES
-14	nps_score	FLOAT64	YES
-15	add_homework_done	INT64	YES
-16	call_date	TIMESTAMP	YES
+
+| Row | Column Name             | Data Type | Is Nullable | Total Records |
+|-----|-------------------------|-----------|-------------|---------------|
+| 3   | first_trial_appointment_date | TIMESTAMP | YES         | 124,517       |
+| 4   | first_payment_date      | TIMESTAMP | YES         | 124,517       |
+| 5   | os                      | STRING    | YES         | 124,517       |
+| 6   | tutor                   | STRING    | YES         | 124,517       |
+| 7   | job                     | STRING    | YES         | 124,517       |
+| 8   | task_class              | FLOAT64   | YES         | 124,517       |
+| 9   | average_score           | FLOAT64   | YES         | 124,517       |
+| 10  | homework_done           | INT64     | YES         | 124,517       |
+| 11  | paywall_paid            | BOOL      | YES         | 124,517       |
+| 12  | school_name             | STRING    | YES         | 124,517       |
+| 13  | desktop_enter           | BOOL      | YES         | 124,517       |
+| 14  | nps_score               | FLOAT64   | YES         | 124,517       |
+| 15  | add_homework_done       | INT64     | YES         | 124,517       |
+| 16  | call_date               | TIMESTAMP | YES         | 124,517       |
+| 17  | first_visit_date        | TIMESTAMP | YES         | 124,517       |
+| 18  | region                  | STRING    | YES         | 124,517       |
+| 19  | is_big_city             | BOOL      | YES         | 124,517       |
+
+
 
 -- 2. Count the total number of records in the dataset.
 SELECT
   COUNT(*) AS total_records
 FROM
   `student_pip2.student_per`;
+
+| Row | Column Name    | Data Type | Is Nullable | Total Records |
+|-----|----------------|-----------|-------------|---------------|
+| 1   | Total Records  |           |             | 124,517       |
 
 ##Results: 
 Row	Total Records
