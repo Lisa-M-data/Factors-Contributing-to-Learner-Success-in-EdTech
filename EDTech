@@ -1,0 +1,132 @@
+-- 1. Explore the data schema to understand the columns.
+SELECT
+  column_name,
+  data_type,
+  is_nullable
+FROM
+  `student_pip2.INFORMATION_SCHEMA.COLUMNS`
+WHERE
+  table_name = 'student_per';
+
+-- 2. Count the total number of records in the dataset.
+SELECT
+  COUNT(*) AS total_records
+FROM
+  `student_pip2.student_per`;
+
+-- 3. Explore student visits to the platform by date of first visit.
+SELECT
+  DATE(first_visit_date) AS visit_date,
+  COUNT(*) AS users
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  visit_date
+ORDER BY
+  visit_date;
+
+-- 4. Explore what computer systems learners are using.
+SELECT
+  os,
+  COUNT(*) AS user_count
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  os
+ORDER BY
+  user_count DESC;
+
+-- 5. Explore how many students are visiting a tutor.
+SELECT
+  tutor,
+  COUNT(*) AS user_count
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  tutor
+ORDER BY
+  user_count DESC;
+
+-- 6. Explore the types of jobs the learners have.
+SELECT
+  job,
+  COUNT(*) AS user_count
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  job
+ORDER BY
+  user_count DESC;
+
+-- 7. Hypothesis Testing: Does homework completion affect average scores?
+-- Calculating the correlation between homework completion and average scores.
+SELECT
+  CORR(homework_done, average_score) AS correlation_coefficient
+FROM
+  `student_pip2.student_per`;
+
+-- 8. Exploring homework completion and average score grouping.
+SELECT
+  homework_done,
+  COUNT(*) AS student_count,
+  AVG(average_score) AS avg_score
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  homework_done
+ORDER BY
+  homework_done;
+
+-- 9. Homework completion levels: Low, Medium, High.
+SELECT
+  CASE
+    WHEN homework_done BETWEEN 0 AND 2 THEN 'Low'
+    WHEN homework_done BETWEEN 3 AND 5 THEN 'Medium'
+    ELSE 'High'
+  END AS homework_level,
+  COUNT(*) AS student_count,
+  AVG(average_score) AS avg_score
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  homework_level
+ORDER BY
+  homework_level;
+
+-- 10. Explore the effect of tutor visits on average scores.
+SELECT
+  tutor,
+  AVG(average_score) AS avg_score,
+  COUNT(*) AS student_count
+FROM
+  `student_pip2.student_per`
+WHERE
+  average_score IS NOT NULL
+GROUP BY
+  tutor
+ORDER BY
+  avg_score DESC;
+
+-- 11. Analyze whether frequent platform engagement affects scores.
+SELECT
+  desktop_enter,
+  COUNT(*) AS user_count,
+  AVG(average_score) AS avg_score
+FROM
+  `student_pip2.student_per`
+GROUP BY
+  desktop_enter
+ORDER BY
+  user_count DESC;
+
+-- 12. Explore the effect of job types on average scores.
+SELECT
+  job,                                -- Group by job type
+  AVG(average_score) AS avg_score,    -- Calculate average score for each job type
+  COUNT(*) AS student_count           -- Count the number of students in each job type
+FROM
+  `student_pip2.student_per`          -- Table containing student data
+GROUP BY
+  job                                 -- Group by job to analyze its impact
+ORDER BY
+  avg_score DESC;                     -- Sort by average score (highest to lowest)
